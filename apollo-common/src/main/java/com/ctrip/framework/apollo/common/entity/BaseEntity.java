@@ -15,17 +15,22 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.Type;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class BaseEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sequence")
+  @SequenceGenerator(name="sequence", /*sequenceName="hibernate_sequence",*/ allocationSize=1)
   @Column(name = "Id")
   private long id;
 
-  @Column(name = "IsDeleted", columnDefinition = "Bit default '0'")
+  @Column(name = "IsDeleted", columnDefinition = "int default '0'")
+  @Type(type= "org.hibernate.type.NumericBooleanType")
   protected boolean isDeleted = false;
 
   @Column(name = "DataChange_CreatedBy", nullable = false)

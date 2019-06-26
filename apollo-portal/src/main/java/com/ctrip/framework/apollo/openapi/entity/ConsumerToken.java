@@ -16,13 +16,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ConsumerToken")
-@SQLDelete(sql = "Update ConsumerToken set isDeleted = 1 where id = ?")
-@Where(clause = "isDeleted = 0")
+@SQLDelete(sql = "Update ConsumerToken set \"IsDeleted\" = '1' where id = ?")
+@Where(clause = "\"IsDeleted\" = '0'")
 public class ConsumerToken extends BaseEntity {
   @Column(name = "ConsumerId", nullable = false)
   private long consumerId;
 
-  @Column(name = "token", nullable = false)
+  @Column(name = "Token", nullable = false)
   private String token;
 
   @Column(name = "Expires", nullable = false)

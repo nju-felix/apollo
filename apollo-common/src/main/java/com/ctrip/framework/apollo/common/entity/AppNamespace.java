@@ -7,6 +7,7 @@ import com.ctrip.framework.apollo.core.enums.ConfigFileFormat;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
@@ -15,8 +16,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "AppNamespace")
-@SQLDelete(sql = "Update AppNamespace set isDeleted = 1 where id = ?")
-@Where(clause = "isDeleted = 0")
+@SQLDelete(sql = "Update AppNamespace set \"IsDeleted\" = '1' where id = ?")
+@Where(clause = "\"IsDeleted\" = '0'")
 public class AppNamespace extends BaseEntity {
 
   @NotBlank(message = "App Name cannot be blank")
@@ -34,7 +35,8 @@ public class AppNamespace extends BaseEntity {
   @Column(name = "Format", nullable = false)
   private String format;
 
-  @Column(name = "IsPublic", columnDefinition = "Bit default '0'")
+  @Column(name = "IsPublic", columnDefinition = "int default '0'")
+  @Type(type="org.hibernate.type.NumericBooleanType")
   private boolean isPublic = false;
 
   @Column(name = "Comment")

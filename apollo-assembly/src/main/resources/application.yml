@@ -4,3 +4,5 @@ spring:
 
 logging:
   file: /opt/logs/100003171/apollo-assembly.log
+
+
