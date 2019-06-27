@@ -19,7 +19,6 @@ import javax.persistence.Table;
 @Table(name = "ReleaseMessage")
 public class ReleaseMessage {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "Id")
   private long id;
 

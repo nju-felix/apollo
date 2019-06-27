@@ -413,7 +413,7 @@ ALTER TABLE public."ReleaseHistory" OWNER TO apollo;
 --
 
 CREATE TABLE "ReleaseMessage" (
-    "Id" integer NOT NULL,
+    "Id" serial NOT NULL,
     "Message" character varying(1024) DEFAULT ''::character varying NOT NULL,
     "DataChange_LastTime" timestamp without time zone default now()
 );
