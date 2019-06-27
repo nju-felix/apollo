@@ -624,9 +624,9 @@ VALUES
     ('item.key.length.limit', 'default', '128', 'item key 最大长度限制');
 
 
-INSERT INTO "App" ("Id", "AppId", "Name", "OrgId", "OrgName", "OwnerName", "OwnerEmail")
+INSERT INTO "App" ("AppId", "Name", "OrgId", "OrgName", "OwnerName", "OwnerEmail")
 VALUES
-    ('0', 'SampleApp', 'Sample App', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com');
+    ('SampleApp', 'Sample App', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com');
 
 INSERT INTO "AppNamespace" ("Name", "AppId", "Format", "IsPublic", "Comment")
 VALUES
