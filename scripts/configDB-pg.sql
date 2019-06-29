@@ -274,7 +274,7 @@ CREATE TABLE "Item" (
     "Id" integer DEFAULT nextval('item_seq'::regclass) NOT NULL,
     "NamespaceId" integer DEFAULT 0,
     "Key" character varying(128),
-    "Value" character varying(2048),
+    "Value" character varying(50000),
     "Comment" character varying(1024) DEFAULT ''::character varying,
     "LineNum" integer DEFAULT 0,
     "DataChange_CreatedBy" character varying(32),
