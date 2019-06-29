@@ -221,7 +221,7 @@ ALTER TABLE "GrayReleaseRule" OWNER TO apollo;
 --
 
 CREATE TABLE "Instance" (
-    "Id" integer NOT NULL,
+    "Id" serial NOT NULL,
     "AppId" character varying(32) NOT NULL,
     "ClusterName" character varying(32) NOT NULL,
     "DataCenter" character varying(64) NOT NULL,
@@ -238,7 +238,7 @@ ALTER TABLE "Instance" OWNER TO apollo;
 --
 
 CREATE TABLE "InstanceConfig" (
-    "Id" integer NOT NULL,
+    "Id" serial NOT NULL,
     "InstanceId" integer,
     "ConfigAppId" character varying(32) NOT NULL,
     "ConfigClusterName" character varying(32) NOT NULL,

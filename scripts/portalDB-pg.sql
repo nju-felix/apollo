@@ -187,7 +187,7 @@ ALTER TABLE consumer_audit_seq OWNER TO apollo;
 --
 
 CREATE TABLE "ConsumerAudit" (
-    "Id" integer DEFAULT nextval('consumer_audit_seq'::regclass) NOT NULL,
+    "Id" serial NOT NULL,
     "ConsumerId" integer,
     "Uri" character varying(1024) DEFAULT ''::character varying NOT NULL,
     "Method" character varying(16) DEFAULT ''::character varying NOT NULL,
