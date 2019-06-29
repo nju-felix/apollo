@@ -814,8 +814,8 @@ INSERT INTO "ReleaseHistory" ("Id", "AppId", "ClusterName", "NamespaceName", "Br
 -- Data for Name: ReleaseMessage; Type: TABLE DATA; Schema: public; Owner: apollo
 --
 
-INSERT INTO "ReleaseMessage" ("Id", "Message", "DataChange_LastTime") VALUES (0, 'greenhouse-sms+default+application', '2019-06-27 14:58:51.541');
-INSERT INTO "ReleaseMessage" ("Id", "Message", "DataChange_LastTime") VALUES (0, 'SampleApp+default+application', '2019-06-27 14:59:01.9');
+INSERT INTO "ReleaseMessage" ("Id", "Message", "DataChange_LastTime") VALUES (1, 'greenhouse-sms+default+application', '2019-06-27 14:58:51.541');
+INSERT INTO "ReleaseMessage" ("Id", "Message", "DataChange_LastTime") VALUES (2, 'SampleApp+default+application', '2019-06-27 14:59:01.9');
 
 
 --

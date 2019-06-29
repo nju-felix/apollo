@@ -4,13 +4,7 @@ import com.google.common.base.MoreObjects;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
@@ -20,6 +14,8 @@ import javax.persistence.Table;
 public class ReleaseMessage {
   @Id
   @Column(name = "Id")
+  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sequence")
+  @SequenceGenerator(name="sequence", /*sequenceName="hibernate_sequence",*/ allocationSize=1)
   private long id;
 
   @Column(name = "Message", nullable = false)
