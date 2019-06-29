@@ -106,10 +106,10 @@ CREATE TABLE "AppNamespace" (
 ALTER TABLE "AppNamespace" OWNER TO apollo;
 
 --
--- Name: App_seq; Type: SEQUENCE; Schema: public; Owner: apollo
+-- Name: Audit_seq; Type: SEQUENCE; Schema: public; Owner: apollo
 --
 
-CREATE SEQUENCE "App_seq"
+CREATE SEQUENCE "audit_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -117,14 +117,14 @@ CREATE SEQUENCE "App_seq"
     CACHE 1;
 
 
-ALTER TABLE "App_seq" OWNER TO apollo;
+ALTER TABLE "audit_seq" OWNER TO apollo;
 
 --
 -- Name: Audit; Type: TABLE; Schema: public; Owner: apollo
 --
 
 CREATE TABLE "Audit" (
-    "Id" integer NOT NULL,
+    "Id" integer DEFAULT nextval('audit_seq'::regclass) NOT NULL,
     "EntityName" character varying(50) NOT NULL,
     "EntityId" integer,
     "OpName" character varying(50) NOT NULL,
@@ -176,8 +176,18 @@ ALTER TABLE "Cluster" OWNER TO apollo;
 -- Name: Commit; Type: TABLE; Schema: public; Owner: apollo
 --
 
+CREATE SEQUENCE "commit_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "commit_seq" OWNER TO apollo;
+
 CREATE TABLE "Commit" (
-    "Id" integer NOT NULL,
+    "Id" integer DEFAULT nextval('commit_seq'::regclass) NOT NULL,
     "ChangeSets" text NOT NULL,
     "AppId" character varying(500) NOT NULL,
     "ClusterName" character varying(500) NOT NULL,
@@ -196,9 +206,18 @@ ALTER TABLE "Commit" OWNER TO apollo;
 --
 -- Name: GrayReleaseRule; Type: TABLE; Schema: public; Owner: apollo
 --
+CREATE SEQUENCE "gray_release_rule_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "gray_release_rule_seq" OWNER TO apollo;
 
 CREATE TABLE "GrayReleaseRule" (
-    "Id" integer NOT NULL,
+    "Id" integer DEFAULT nextval('gray_release_rule_seq'::regclass) NOT NULL,
     "AppId" character varying(32) NOT NULL,
     "ClusterName" character varying(32) NOT NULL,
     "NamespaceName" character varying(32) NOT NULL,
@@ -219,9 +238,18 @@ ALTER TABLE "GrayReleaseRule" OWNER TO apollo;
 --
 -- Name: Instance; Type: TABLE; Schema: public; Owner: apollo
 --
+CREATE SEQUENCE "instance_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "instance_seq" OWNER TO apollo;
 
 CREATE TABLE "Instance" (
-    "Id" serial NOT NULL,
+    "Id" integer DEFAULT nextval('instance_seq'::regclass) NOT NULL,
     "AppId" character varying(32) NOT NULL,
     "ClusterName" character varying(32) NOT NULL,
     "DataCenter" character varying(64) NOT NULL,
@@ -236,9 +264,17 @@ ALTER TABLE "Instance" OWNER TO apollo;
 --
 -- Name: InstanceConfig; Type: TABLE; Schema: public; Owner: apollo
 --
+CREATE SEQUENCE "instance_config_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
+
+ALTER TABLE "instance_config_seq" OWNER TO apollo;
 CREATE TABLE "InstanceConfig" (
-    "Id" serial NOT NULL,
+    "Id" integer DEFAULT nextval('instance_config_seq'::regclass) NOT NULL,
     "InstanceId" integer,
     "ConfigAppId" character varying(32) NOT NULL,
     "ConfigClusterName" character varying(32) NOT NULL,
@@ -323,9 +359,18 @@ ALTER TABLE "Namespace" OWNER TO apollo;
 --
 -- Name: NamespaceLock; Type: TABLE; Schema: public; Owner: apollo
 --
+CREATE SEQUENCE namespace_lock_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE namespace_lock_seq OWNER TO apollo;
 
 CREATE TABLE "NamespaceLock" (
-    "Id" integer NOT NULL,
+    "Id" integer DEFAULT nextval('namespace_lock_seq'::regclass) NOT NULL,
     "NamespaceId" integer DEFAULT 0 NOT NULL,
     "DataChange_CreatedBy" character varying(32) NOT NULL,
     "DataChange_CreatedTime" timestamp without time zone DEFAULT now() NOT NULL,
@@ -417,8 +462,19 @@ ALTER TABLE "ReleaseHistory" OWNER TO apollo;
 -- Name: ReleaseMessage; Type: TABLE; Schema: public; Owner: apollo
 --
 
+CREATE SEQUENCE release_message_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE release_message_seq OWNER TO apollo;
+
+
 CREATE TABLE "ReleaseMessage" (
-    "Id" integer NOT NULL,
+    "Id" integer DEFAULT nextval('release_message_seq'::regclass) NOT NULL,
     "Message" character varying(1024) DEFAULT ''::character varying NOT NULL,
     "DataChange_LastTime" timestamp without time zone DEFAULT now()
 );
@@ -662,14 +718,6 @@ INSERT INTO "App" ("Id", "AppId", "Name", "OrgId", "OrgName", "OwnerName", "Owne
 INSERT INTO "AppNamespace" ("Id", "Name", "AppId", "Format", "IsPublic", "Comment", "DataChange_CreatedBy", "DataChange_CreatedTime", "DataChange_LastModifiedBy", "DataChange_LastTime", "IsDeleted") VALUES (1, 'application', 'SampleApp', 'properties', 0, 'default app namespace', '', '2019-06-27 14:53:28.274389', '', '2019-06-27 14:53:28.274389', 0);
 INSERT INTO "AppNamespace" ("Id", "Name", "AppId", "Format", "IsPublic", "Comment", "DataChange_CreatedBy", "DataChange_CreatedTime", "DataChange_LastModifiedBy", "DataChange_LastTime", "IsDeleted") VALUES (3, 'application', 'greenhouse-sms', 'properties', 0, 'default app namespace', 'apollo', '2019-06-27 14:56:31.016', 'apollo', '2019-06-27 14:56:31.016', 0);
 INSERT INTO "AppNamespace" ("Id", "Name", "AppId", "Format", "IsPublic", "Comment", "DataChange_CreatedBy", "DataChange_CreatedTime", "DataChange_LastModifiedBy", "DataChange_LastTime", "IsDeleted") VALUES (11, 'application', 'greenhouse-sha', 'properties', 0, 'default app namespace', 'apollo', '2019-06-27 14:57:58.162', 'apollo', '2019-06-27 14:57:58.162', 0);
-
-
---
--- Name: App_seq; Type: SEQUENCE SET; Schema: public; Owner: apollo
---
-
-SELECT pg_catalog.setval('"App_seq"', 1, false);
-
 
 --
 -- Data for Name: Audit; Type: TABLE DATA; Schema: public; Owner: apollo
