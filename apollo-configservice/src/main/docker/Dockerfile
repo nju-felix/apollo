@@ -1,7 +1,7 @@
 # Dockerfile for apollo-configservice
 # 1. Copy apollo-configservice-${VERSION}-github.zip to current directory
 # 2. Build with: docker build -t apollo-configservice .
-# 3. Run with: docker run -p 8080:8080 -d -v /tmp/logs:/opt/logs --name apollo-configservice apollo-configservice
+# 3. Run with: docker run -p 8060:8060 -d -v /tmp/logs:/opt/logs --name apollo-configservice apollo-configservice
 
 FROM openjdk:8-jre-alpine
 MAINTAINER ameizi <sxyx2008@163.com>
@@ -22,6 +22,6 @@ RUN unzip /apollo-configservice/apollo-configservice-${VERSION}-github.zip -d /a
     && sed -i '$d' /apollo-configservice/scripts/startup.sh \
     && echo "tail -f /dev/null" >> /apollo-configservice/scripts/startup.sh
 
-EXPOSE 8080
+EXPOSE 8060
 
 CMD ["/apollo-configservice/scripts/startup.sh"]

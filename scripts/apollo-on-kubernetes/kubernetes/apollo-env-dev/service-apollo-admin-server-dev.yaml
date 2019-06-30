@@ -11,7 +11,7 @@ data:
     spring.datasource.url = jdbc:mysql://service-mysql-for-apollo-dev-env.sre:3306/DevApolloConfigDB?characterEncoding=utf8
     spring.datasource.username = FillInCorrectUser
     spring.datasource.password = FillInCorrectPassword
-    eureka.service.url = http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8080/eureka/
+    eureka.service.url = http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8060/eureka/
 
 ---
 kind: Service
@@ -68,7 +68,7 @@ spec:
       initContainers:
         - image: alpine-bash:3.8
           name: check-service-apollo-config-server-dev
-          command: ['bash', '-c', "curl --connect-timeout 2 --max-time 5 --retry 60 --retry-delay 1 --retry-max-time 120 service-apollo-config-server-dev.sre:8080"]
+          command: ['bash', '-c', "curl --connect-timeout 2 --max-time 5 --retry 60 --retry-delay 1 --retry-max-time 120 service-apollo-config-server-dev.sre:8060"]
       
       containers:
         - image: apollo-admin-server:v1.0.0

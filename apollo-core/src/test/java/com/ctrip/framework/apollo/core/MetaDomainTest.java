@@ -24,8 +24,8 @@ public class MetaDomainTest extends BaseIntegrationTest {
 
   @Test
   public void testGetMetaDomain() {
-    assertEquals("http://localhost:8080", MetaDomainConsts.getDomain(Env.LOCAL));
-    assertEquals("http://dev:8080", MetaDomainConsts.getDomain(Env.DEV));
+    assertEquals("http://localhost:8060", MetaDomainConsts.getDomain(Env.LOCAL));
+    assertEquals("http://dev:8060", MetaDomainConsts.getDomain(Env.DEV));
     assertEquals(MetaDomainConsts.DEFAULT_META_URL, MetaDomainConsts.getDomain(Env.PRO));
   }
 

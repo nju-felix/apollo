@@ -44,10 +44,10 @@ data:
     # mysql password
     spring.datasource.password = FillInCorrectPassword
   apollo-env.properties: |
-    dev.meta=http://service-apollo-config-server-dev.sre:8080
-    fat.meta=http://service-apollo-config-server-test-alpha.sre:8080
-    uat.meta=http://service-apollo-config-server-test-beta.sre:8080
-    pro.meta=http://service-apollo-config-server-prod.sre:8080
+    dev.meta=http://service-apollo-config-server-dev.sre:8060
+    fat.meta=http://service-apollo-config-server-test-alpha.sre:8060
+    uat.meta=http://service-apollo-config-server-test-beta.sre:8060
+    pro.meta=http://service-apollo-config-server-prod.sre:8060
 
 ---
 kind: Service

@@ -70,12 +70,12 @@ public class ApolloMockServerSpringIntegrationTest {
   @Test
   @DirtiesContext
   public void shouldNotifyOnInterestedPatterns() throws Exception {
-    embeddedApollo.addOrModifyProperty(otherNamespace, "server.port", "8080");
+    embeddedApollo.addOrModifyProperty(otherNamespace, "server.port", "8060");
     embeddedApollo.addOrModifyProperty(otherNamespace, "server.path", "/apollo");
     embeddedApollo.addOrModifyProperty(otherNamespace, "spring.application.name", "whatever");
     ConfigChangeEvent changeEvent = testInterestedKeyPrefixesBean.futureData.get(5000, TimeUnit.MILLISECONDS);
     assertEquals(otherNamespace, changeEvent.getNamespace());
-    assertEquals("8080", changeEvent.getChange("server.port").getNewValue());
+    assertEquals("8060", changeEvent.getChange("server.port").getNewValue());
     assertEquals("/apollo", changeEvent.getChange("server.path").getNewValue());
   }
 

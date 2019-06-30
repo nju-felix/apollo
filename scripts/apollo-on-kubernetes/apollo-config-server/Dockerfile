@@ -18,6 +18,6 @@ ADD . /apollo-config-server/
 
 ENV APOLLO_CONFIG_SERVICE_NAME="service-apollo-config-server.sre"
 
-EXPOSE 8080
+EXPOSE 8060
 
 CMD ["/apollo-config-server/scripts/startup-kubernetes.sh"]

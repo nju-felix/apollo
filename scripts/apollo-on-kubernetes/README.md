@@ -57,7 +57,7 @@ MySQL 部署步骤略
 
 示例假设你的 apollo 开启了 4 个环境, 即 dev、test-alpha、test-beta、prod, 在你的 MySQL 中导入 scripts/apollo-on-kubernetes/db 下的文件即可
 
-如果有需要, 你可以更改 eureka.service.url 的地址, 格式为 http://config-server-pod-name-index.meta-server-service-name:8080/eureka/ , 例如 http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8080/eureka/
+如果有需要, 你可以更改 eureka.service.url 的地址, 格式为 http://config-server-pod-name-index.meta-server-service-name:8060/eureka/ , 例如 http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8060/eureka/
 
 ### 2.2 Deploy apollo on kubernetes
 
@@ -157,7 +157,7 @@ Prod <br/>
 
 以 apollo-env-dev 为例:
 ```bash
-('eureka.service.url', 'default', 'http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8080/eureka/', 'Eureka服务Url，多个service以英文逗号分隔')
+('eureka.service.url', 'default', 'http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8060/eureka/', 'Eureka服务Url，多个service以英文逗号分隔')
 ```
 你可以精简 config-server pod 的 name, 示例的长名字是为了更好的阅读与理解。
 
@@ -178,7 +178,7 @@ data:
     spring.datasource.url = jdbc:mysql://service-mysql-for-apollo-dev-env-mariadb.sre:3306/DevApolloConfigDB?characterEncoding=utf8
     spring.datasource.username = root
     spring.datasource.password = test
-    eureka.service.url = http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8080/eureka/
+    eureka.service.url = http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8060/eureka/
 
 ```
 
@@ -196,7 +196,7 @@ data:
     spring.datasource.url = jdbc:mysql://service-mysql-for-apollo-dev-env-mariadb.sre:3306/DevApolloConfigDB?characterEncoding=utf8
     spring.datasource.username = root
     spring.datasource.password = m6bCdQXa00
-    eureka.service.url = http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8080/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8080/eureka/
+    eureka.service.url = http://statefulset-apollo-config-server-dev-0.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-1.service-apollo-meta-server-dev:8060/eureka/,http://statefulset-apollo-config-server-dev-2.service-apollo-meta-server-dev:8060/eureka/
 
 ```
 

@@ -11,10 +11,10 @@ set apollo_portal_db_username="root"
 set apollo_portal_db_password=""
 
 rem meta server url, different environments should have different meta server addresses
-set dev_meta="http://localhost:8080"
-set fat_meta="http://someIp:8080"
-set uat_meta="http://anotherIp:8080"
-set pro_meta="http://yetAnotherIp:8080"
+set dev_meta="http://localhost:8060"
+set fat_meta="http://someIp:8060"
+set uat_meta="http://anotherIp:8060"
+set pro_meta="http://yetAnotherIp:8060"
 
 set META_SERVERS_OPTS=-Ddev_meta=%dev_meta% -Dfat_meta=%fat_meta% -Duat_meta=%uat_meta% -Dpro_meta=%pro_meta%
 

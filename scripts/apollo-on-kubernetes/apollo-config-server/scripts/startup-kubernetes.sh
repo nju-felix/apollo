@@ -3,7 +3,7 @@ SERVICE_NAME=apollo-configservice
 ## Adjust log dir if necessary
 LOG_DIR=/opt/logs/apollo-config-server
 ## Adjust server port if necessary
-SERVER_PORT=8080
+SERVER_PORT=8060
 
 SERVER_URL="http://${APOLLO_CONFIG_SERVICE_NAME}:${SERVER_PORT}"
 

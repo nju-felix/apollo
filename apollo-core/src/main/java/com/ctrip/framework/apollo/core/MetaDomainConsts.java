@@ -125,7 +125,7 @@ public class MetaDomainConsts {
 
   /**
    * Select one available meta server from the comma separated meta server addresses, e.g.
-   * http://1.2.3.4:8080,http://2.3.4.5:8080
+   * http://1.2.3.4:8060,http://2.3.4.5:8060
    *
    * <br />
    *

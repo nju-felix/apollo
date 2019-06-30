@@ -11,7 +11,7 @@ data:
     spring.datasource.url = jdbc:mysql://service-mysql-for-apollo-test-alpha-env.sre:3306/TestAlphaApolloConfigDB?characterEncoding=utf8
     spring.datasource.username = FillInCorrectUser
     spring.datasource.password = FillInCorrectPassword
-    eureka.service.url = http://statefulset-apollo-config-server-test-alpha-0.service-apollo-meta-server-test-alpha:8080/eureka/,http://statefulset-apollo-config-server-test-alpha-1.service-apollo-meta-server-test-alpha:8080/eureka/,http://statefulset-apollo-config-server-test-alpha-2.service-apollo-meta-server-test-alpha:8080/eureka/
+    eureka.service.url = http://statefulset-apollo-config-server-test-alpha-0.service-apollo-meta-server-test-alpha:8060/eureka/,http://statefulset-apollo-config-server-test-alpha-1.service-apollo-meta-server-test-alpha:8060/eureka/,http://statefulset-apollo-config-server-test-alpha-2.service-apollo-meta-server-test-alpha:8060/eureka/
 
 ---
 kind: Service
@@ -24,8 +24,8 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8060
+      targetPort: 8060
   selector:
     app: pod-apollo-config-server-test-alpha
   type: ClusterIP
@@ -43,8 +43,8 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8060
+      targetPort: 8060
       nodePort: 30003
   selector:
     app: pod-apollo-config-server-test-alpha
@@ -91,7 +91,7 @@ spec:
           name: container-apollo-config-server-test-alpha
           ports:
             - protocol: TCP
-              containerPort: 8080
+              containerPort: 8060
           
           volumeMounts:
             - name: volume-configmap-apollo-config-server-test-alpha
@@ -103,13 +103,13 @@ spec:
           
           readinessProbe:
             tcpSocket:
-              port: 8080
+              port: 8060
             initialDelaySeconds: 10
             periodSeconds: 5
           
           livenessProbe:
             tcpSocket:
-              port: 8080
+              port: 8060
             initialDelaySeconds: 120
             periodSeconds: 10
           
